@@ -43,6 +43,9 @@ def cadastrar_candidato():
             resumo = limpar_resumo(input('\nDigite o resumo do(a) candidato(a) com as palavras-chaves separadas por virgula:\n'))
         elif pergunta_resumo == '2':
             nome_arquivo = input('\nDigite o nome do arquivo com .txt no final: \n')
+            with open(nome_arquivo) as f:
+                resumo = f.read()
+                resumo = limpar_resumo(resumo)
         else:
             resumo = ''
         vaga = input('\nPara qual vaga ele(a) está inscrevendo?\n[1] - Analista de dados\n[2] - Cientista de dados\n')
@@ -65,4 +68,3 @@ def cadastrar_candidato():
 def limpar_resumo(resumo):
     return resumo.replace(' ','').lower().split(',')
 
-menu()
